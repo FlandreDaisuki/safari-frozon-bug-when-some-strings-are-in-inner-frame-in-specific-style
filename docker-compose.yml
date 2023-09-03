@@ -1,0 +1,29 @@
+version: "3"
+
+services:
+  inner-frame:
+    build:
+      context: ./inner-frame
+      dockerfile: docker/Dockerfile
+    container_name: inner-frame
+    ports:
+      - "${INNER_FRAME_EXPOSE_PORT:-8580}:8000"
+    networks:
+      - safari_tab_freeze_bug
+    restart: unless-stopped
+
+  outer-frame:
+    build:
+      context: ./outer-frame
+      dockerfile: docker/Dockerfile
+    container_name: outer-frame
+    ports:
+      - "${OUTER_FRAME_EXPOSE_PORT:-8680}:8100"
+    environment:
+      - INNER_FRAME_ORIGIN=${INNER_FRAME_ORIGIN:-http://localhost:8580}
+    networks:
+      - safari_tab_freeze_bug
+    restart: unless-stopped
+
+networks:
+  safari_tab_freeze_bug: {}

@@ -1,0 +1,14 @@
+.DS_Store
+node_modules
+/dist
+
+.*
+!.env.example
+!.gitignore
+!.browserslistrc
+
+# Log files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+*.log

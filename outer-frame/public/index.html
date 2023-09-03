@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>The outer frame that contains the inner frame and have 2 vue instance</title>
+</head>
+
+<body>
+  <div id="app"></div>
+  <div id="secondary-app"></div>
+
+  <!-- The FPS monitor is unnecessary but useful to see whether the tab is frozen.  -->
+  <script src="https://mrdoob.github.io/stats.js/build/stats.min.js"></script>
+  <script>
+    ((stats) => {
+      document.body.appendChild(stats.dom);
+      requestAnimationFrame(function loop() {
+        stats.update();
+        requestAnimationFrame(loop);
+      });
+    })(new Stats());
+  </script>
+</body>
+
+</html>
