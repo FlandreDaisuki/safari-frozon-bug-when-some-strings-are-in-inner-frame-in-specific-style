@@ -3,7 +3,7 @@
     <div style="max-width: calc(100% - 70px)">
       <div class="m-3">
         <div class="px-2">
-          <!-- any sequence of following words will cause safari freeze -->
+          <!-- any of following words will cause safari frozen -->
           <span>お得🉐!</span>
           <span>お得🉐！</span>
           <span>お得🉐-</span>

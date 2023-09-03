@@ -1,11 +1,11 @@
 <template>
   <main>
+    <!-- This gray div is unnecessary -->
     <div style="height: 200vh; background: gray" />
     <div id="an-element-in-main-app" />
-    <a
-      href="http://example.com"
-      target="_blank"
-    >Try to click me</a>
+
+    <!-- This link is a test whether safari is frozen -->
+    <a href="http://example.com" target="_blank">Try to click me</a>
   </main>
 </template>
 
