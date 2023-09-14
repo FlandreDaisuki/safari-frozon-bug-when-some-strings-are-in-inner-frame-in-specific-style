@@ -1,5 +1,11 @@
 # safari-frozon-bug-when-some-strings-are-in-inner-frame-in-specific-style
 
+There are some factors to trigger the bug:
+
+1. inner frame should have some specific words
+2. some specific style in inner frame
+3. some specific style in outer frame
+
 Here is a [demo site](https://flandredaisuki.github.io/safari-frozon-bug-when-some-strings-are-in-inner-frame-in-specific-style/outer-frame/)
 
 ⚠️ Caution! Your Safari tab may be frozen. ⚠️
