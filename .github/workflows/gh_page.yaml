@@ -1,0 +1,60 @@
+name: Build and Deploy demo on GitHub pages
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build_and_deploy:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+
+      - name: Install dependencies (inner-frame)
+        run: yarn install --frozen-lockfile
+        working-directory: inner-frame
+
+      - name: Build assets (inner-frame)
+        run: |
+          sed -i "2i \  publicPath: '/safari-frozon-bug-when-some-strings-are-in-inner-frame-in-specific-style/'," vue.config.js
+          yarn build
+        working-directory: inner-frame
+
+      - name: Install dependencies (outer-frame)
+        run: |
+          npm install -g pnpm
+          pnpm install --frozen-lockfile
+        working-directory: outer-frame
+
+      - name: Build assets (outer-frame)
+        env:
+          INNER_FRAME_ORIGIN: https://flandredaisuki.github.io/safari-frozon-bug-when-some-strings-are-in-inner-frame-in-specific-style/
+        run: |
+          sed -i "s|<% INNER_FRAME_ORIGIN %>|${INNER_FRAME_ORIGIN}|" ./src/SecondaryApp.vue
+          sed -i "2i \  publicPath: '/safari-frozon-bug-when-some-strings-are-in-inner-frame-in-specific-style/outer-frame/'," vue.config.js
+          pnpm build
+        working-directory: outer-frame
+
+      - name: Prepare deploy folder
+        run: |
+          mv inner-frame/dist ./public
+          mv outer-frame/dist ./public/outer-frame
+
+      # https://github.com/marketplace/actions/github-pages-action
+      - uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public
+          force_orphan: true
+

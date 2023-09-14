@@ -5,7 +5,7 @@ node_modules
 .*
 !.env.example
 !.gitignore
-!.browserslistrc
+!.github
 
 # Log files
 npm-debug.log*

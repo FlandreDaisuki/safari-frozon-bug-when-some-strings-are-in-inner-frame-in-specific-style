@@ -1,5 +1,9 @@
 # safari-frozon-bug-when-some-strings-are-in-inner-frame-in-specific-style
 
+Here is a [demo site](https://flandredaisuki.github.io/safari-frozon-bug-when-some-strings-are-in-inner-frame-in-specific-style/outer-frame/)
+
+⚠️ Caution! Your Safari tab may be frozen. ⚠️
+
 ## Setup
 
 ```sh
