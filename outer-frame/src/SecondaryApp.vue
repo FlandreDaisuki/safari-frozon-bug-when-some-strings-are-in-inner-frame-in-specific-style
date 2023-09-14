@@ -1,17 +1,6 @@
 <script>
-import { nextTick } from 'vue'
-
 export default {
   name: 'SecondaryApp',
-  setup () {
-    setInterval(() => {
-      nextTick(() => {
-        document.querySelector('#an-element-in-main-app')
-      })
-    }, 1000)
-
-    return {}
-  },
 }
 </script>
 
