@@ -4,6 +4,7 @@
       <div class="m-3">
         <div class="px-2">
           <!-- any of following words will cause safari frozen -->
+          <span>ariさん🎵KATE</span>
           <span>お得🉐!</span>
           <span>お得🉐！</span>
           <span>お得🉐-</span>
